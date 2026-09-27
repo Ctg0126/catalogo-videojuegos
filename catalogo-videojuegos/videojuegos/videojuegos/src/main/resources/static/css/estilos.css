@@ -1,0 +1,196 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #030617;
+    color: #E5E7EB;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+main{
+    flex: 1;
+}
+
+form {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    margin: 20px 0;
+    background-color: #0F172A;
+    padding: 0;
+    margin: 0;
+    padding-bottom:20px ;
+    flex-direction: column; /* input y botón apilados en vez de en fila */
+    align-items: center;
+
+}
+
+header {
+    background-color: #0F172A;
+    color: #818CF8;
+    padding: 20px;
+    text-align: center;
+}
+
+.regreso{
+    text-decoration: none;
+    color: #818CF8;
+}
+
+input{
+    background-color: #030617;
+    border-color: #818CF8;
+    padding: 12px 100px;
+    border-radius: 16px;
+}
+
+input[type="text"] {
+    color: #E5E7EB; 
+    max-width: 100%;
+}
+
+.buscar{
+    background-color: #5C4EFE;
+    color: white;
+    font-style: bold;
+    padding: 12px 20px;
+    border-radius: 8px;
+}
+
+.bienvenida{
+    text-align: center;
+}
+
+span{
+    font-weight: bold;
+}
+.lista-juegos{
+    list-style: none;
+    margin: 0;
+    padding: 20 px;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    gap: 16px;
+    justify-content: center;  
+}
+
+.tarjeta-juego{
+    background-color: #0F172A; 
+    border: 1px solid #818CF8;
+    border-radius: 8px;
+    padding: 16px 20px;
+    box-shadow: 0 2px 4px rgb(59, 56, 72);
+    font-size: 1.1rem;
+    font-weight: 600;
+    min-width: 180px;
+    text-align: center;
+    margin: 8px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* 
+nav {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 15px;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+}
+
+nav a:hover {
+    text-decoration: underline;
+}
+
+.contenedor {
+    max-width: 1100px;
+    margin: 30px auto;
+    padding: 20px;
+}
+
+.catalogo {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 25px;
+}
+
+.tarjeta {
+    background-color: white;
+    border-radius: 10px;
+    padding: 15px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+.tarjeta img {
+    width: 100%;
+    max-width: 100%;
+    height: 220px;
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+.tarjeta h2 {
+    margin-top: 15px;
+}
+
+.tarjeta p {
+    margin: 8px 0;
+} */
+
+ footer {
+    margin-top: 40px;
+    padding: 20px;
+    background-color: #0F172A;
+    color: #E5E7EB;
+    text-align: center;
+}
+
+@media (max-width: 768px) {
+    .catalogo {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 500px) {
+    .catalogo {
+        grid-template-columns: 1fr;
+    }
+}
+@media (min-width: 1200px) {
+    .lista-juegos {
+        max-width: 1100px;
+        margin: 0 auto;
+    }
+}
