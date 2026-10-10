@@ -92,17 +92,51 @@ span{
     margin: 8px;
 }
 
+.inicio-h2{
+    text-align: center;
+}
+
+.inicio-figure{
+display: flex;
+justify-content: center;
+align-items: center;
+margin: 30px auto;
+max-width: 200px;
+width: 100%;
+}
+
+.inicio-figure img {
+width: 100%;
+max-width: 2000px;
+min-width: 900px;
+max-height: 300px;
+height: auto;
+object-fit: contain;
+}
 
 
+.catalogo-ir{
+    display: block;
+    margin: 20px auto;
+    padding: 12px 100px;
+    cursor: pointer;
+    text-decoration: none;
+    border-radius: 16px;
+    background-color: #0F172A;
+    border-color: #818CF8;
+    color:  #E5E7EB;
+    font-weight: bold;
+    transition: background-color 1.2s, color 1.2s;
+}
 
+.catalogo-ir:hover{
+    background-color: #818CF8;
+    color: black;
+}
 
-
-
-
-
-
-
-
+.link-inicio{
+    text-decoration: none;
+}
 
 
 
