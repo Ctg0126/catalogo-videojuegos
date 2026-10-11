@@ -16,23 +16,19 @@ public class Videojuego {
         this.imagen = imagen;
     }
 
-    public String getNombre() {
-        return nombre;
-    }
+    public String getNombre() { return nombre;}
+    public void setNombre(String nombre){this.nombre = nombre;}
 
-    public String getGenero() {
-        return genero;
-    }
+    public String getGenero() { return genero;}
+    public void setGenero(String genero) {this.genero = genero;}
 
-    public String getPlataforma() {
-        return plataforma;
-    }
+    public String getPlataforma() { return plataforma;}
+    public void setPlataforma(String plataforma) {this.plataforma = plataforma;}
 
-    public double getPrecio() {
-        return precio;
-    }
+    public double getPrecio() { return precio;}
+    public void setPrecio(double precio) {this.precio = precio;}
 
-    public String getImagen() {
-        return imagen;
-    }
+    public String getImagen() { return imagen;}
+    public void setImagen(String imagen) {this.imagen = imagen;}
+
 }
