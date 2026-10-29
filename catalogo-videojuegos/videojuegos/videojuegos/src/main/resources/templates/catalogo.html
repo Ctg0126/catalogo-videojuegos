@@ -33,7 +33,10 @@
         <ul class="lista-juegos">
             
             <li class="tarjeta-juego" th:each="videojuego : ${nombre}">
-            <a th:href="@{/videojuego/{id}(id=${videojuego.id})}" th:text="${videojuego.nombre}">Nombre</a>
+            <a th:href="@{/videojuegos/ficha/{id}(id=${videojuego.id})}" th:text="${videojuego.nombre}">Nombre</a>
+            
+            <!-- <hr><span th:text="${videojuego.genero}">Accion</span> -->
+            <hr><img th:src="${videojuego.imagen}" th:alt="${videojuego.nombre}" class="imagen-juego">
             </li>
 
         </ul>
