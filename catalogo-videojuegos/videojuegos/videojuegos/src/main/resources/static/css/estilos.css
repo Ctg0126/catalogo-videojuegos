@@ -79,7 +79,12 @@ span{
     justify-content: center;  
 }
 
-.tarjeta-juego{
+.lista-juegos a {
+    text-decoration: none;
+    color: #E5E7EB;
+}
+
+.tarjeta-juego {
     background-color: #0F172A; 
     border: 1px solid #818CF8;
     border-radius: 8px;

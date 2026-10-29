@@ -26,12 +26,16 @@
 
       
 
-        <p th:if="${#lists.isEmpty(titulos)}">No hay libros que coincidan.</p>
+        <p th:if="${#lists.isEmpty(nombre)}">No hay vidojuegos que coincidan que coincidan.</p>
               
         <p class="bienvenida">Bienvenidos a <span>GameCatalog</span> te presentamos nuestro catalogo:</p>
 
         <ul class="lista-juegos">
-            <li class="tarjeta-juego" th:each="titulo : ${titulos}" th:text="${titulo}">Titulo de ejemplo</li>
+            
+            <li class="tarjeta-juego" th:each="videojuego : ${nombre}">
+            <a th:href="@{/videojuego/{id}(id=${videojuego.id})}" th:text="${videojuego.nombre}">Nombre</a>
+            </li>
+
         </ul>
         
     </main>

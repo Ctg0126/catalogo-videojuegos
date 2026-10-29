@@ -1,43 +1,24 @@
 package com.catalogo.videojuegos.service;
 
-import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
-import org.springframework.stereotype.Service;
 
 import com.catalogo.videojuegos.model.Videojuego;
 
-@Service
-public class VideojuegoService {
 
-    public List<Videojuego> obtenerVideojuegos() {
+public interface VideojuegoService {
 
-        List<Videojuego> videojuegos = new ArrayList<>();
+List<Videojuego> listar();
 
-        videojuegos.add(new Videojuego(
-                "Minecraft",
-                "Supervivencia",
-                "PC",
-                80000,
-                "/imagenes/minecraft.jpg"
-        ));
+List<Videojuego> buscarPorNombre(String texto);
 
-        videojuegos.add(new Videojuego(
-                "GTA V",
-                "Acción",
-                "PC",
-                90000,
-                "/imagenes/gta5.jpg"
-        ));
+Optional<Videojuego> buscar(Long id);
+ 
+Videojuego crear (Videojuego videojuego);
 
-        videojuegos.add(new Videojuego(
-                "EA Sports FC 26",
-                "Deportes",
-                "PS5",
-                250000,
-                "/imagenes/fc26.jpg"
-        ));
+Videojuego editar (Long id, Videojuego videojuego);
 
-        return videojuegos;
-    }
+void borrar(Long id);
+
 }
