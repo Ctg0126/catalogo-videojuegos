@@ -41,5 +41,13 @@ public String ficha(@PathVariable Long id, Model modelo) {
     return "videojuegos/ficha";
 }
 
+@GetMapping("/nuevo")
+public String nuevo(Model modelo){
+    modelo.addAttribute("videojuego", new Videojuego());
+    return "videojuegos/nuevo";
+
+}
+
+
 }
 

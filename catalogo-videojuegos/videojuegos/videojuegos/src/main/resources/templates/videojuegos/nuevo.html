@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+    <head th:replace="~{fragmentos/comunes :: cabeza('Agregar')}"></head>
+<body>
+    
+ <header th:replace="~{fragmentos/comunes :: cabecera}"></header>
+
+<main class="nuevo-videojuego">
+    
+    <h2 class="Agregar-titulo">Agregar Videojuego</h2>
+      
+    <a th:href="@{/videojuegos}" class="regreso">
+            ← Volver al catálogo
+        </a>
+
+
+
+
+
+
+
+
+</main>
+
+<footer th:replace="~{fragmentos/comunes :: pie}"></footer>
+
+</body>
+</html>

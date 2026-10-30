@@ -1,5 +1,6 @@
 package com.catalogo.videojuegos.controller.api;
 
+
 import java.net.URI;
 import java.util.List;
 import java.util.Map;
@@ -48,7 +49,7 @@ public ResponseEntity<VideojuegoDTO> uno(@PathVariable Long id){
 @PostMapping 
 public  ResponseEntity<VideojuegoDTO> crear(@RequestBody VideojuegoEntrada entrada){
     Videojuego creado = servicio.crear(new Videojuego(null, entrada.nombre(), entrada.genero(), entrada.plataforma(), entrada.precio(), entrada.imagen()));
-    return ResponseEntity.created(URI.create("/api/Videojuegos"+ creado.getId())).body(VideojuegoDTO.de(creado));
+    return ResponseEntity.created(URI.create("/api/Videojuegos/"+ creado.getId())).body(VideojuegoDTO.de(creado));
 }
 
 @PutMapping("/{id}")

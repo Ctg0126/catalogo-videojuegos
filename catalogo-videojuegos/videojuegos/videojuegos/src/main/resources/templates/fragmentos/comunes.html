@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head th:fragment="cabeza(titulos)">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title th:text="${titulos} + ' · GameCatalog '">GameCatalog</title>
+      <link rel="stylesheet" th:href="@{/css/estilos.css}">
+</head>
+<body>
+
+    <header th:fragment="cabecera">
+        <a class="regreso" href="http://localhost:8081/videojuegos"><h1>GameCatalog</h1> </a>
+    </header>
+
+    <nav th:fragment="menu(activo)">
+        
+    </nav>
+    
+    <footer th:fragment="pie">
+        <p>© 2026 GameCatalog</p> 
+    </footer>
+
+</body>
+</html>

@@ -1,20 +1,11 @@
 <!DOCTYPE html>
 <html lang="es" xmlns:th="http://www.thymeleaf.org">
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Catálogo de Videojuegos</title>
-    <link rel="stylesheet" href="/css/estilos.css">
-</head>
+ <head th:replace="~{fragmentos/comunes :: cabeza('Agregar')}"></head>
 
-<body>
+<body><header th:replace="~{fragmentos/comunes :: cabecera}"></header>
 
-    <header>
-
-        <h1>Catalogo de Videojuegos</h1>
-
-    </header>
+    
 
     <main>
 
@@ -29,11 +20,7 @@
 
     </main>
 
-    <footer>
-
-        <p>© 2026 GameCatalog</p>
-    </footer>
-
+   <footer th:replace="~{fragmentos/comunes :: pie}"></footer>
 
 </body>
 
