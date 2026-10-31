@@ -1,12 +1,28 @@
 package com.catalogo.videojuegos.model;
 
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.PositiveOrZero;
+import jakarta.validation.constraints.Size;
+
 public class Videojuego {
 
     private Long id;
+
+    @NotBlank(message = "El nombre del videojuego es obligatorio")
+    @Size(max = 100, message = "el nombre no puede superar los 100 caracteres")
     private String nombre;
+
+    @NotBlank(message = "El género es obligatorio")
     private String genero;
+
+    @NotBlank(message = "la plataforma es obligatoria")
     private String plataforma;
+
+    @NotNull (message = "El precio es obligatorio")
+    @PositiveOrZero(message = "El precio no puede ser negativo")
     private double precio;
+    
     private String imagen;
 
 

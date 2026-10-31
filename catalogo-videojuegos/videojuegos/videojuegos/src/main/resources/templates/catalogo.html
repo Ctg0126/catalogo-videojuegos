@@ -22,6 +22,8 @@
               
         <p class="bienvenida">Bienvenidos a <span>GameCatalog</span> te presentamos nuestro catalogo:</p>
 
+        <p class="aviso" th:if="${aviso}" th:text="${aviso}"></p>
+
         <ul class="lista-juegos">
             
             <li class="tarjeta-juego" th:each="videojuego : ${nombre}">
@@ -32,6 +34,7 @@
             </li>
 
         </ul>
+
         
     </main>
 <footer th:replace="~{fragmentos/comunes :: pie}"></footer>

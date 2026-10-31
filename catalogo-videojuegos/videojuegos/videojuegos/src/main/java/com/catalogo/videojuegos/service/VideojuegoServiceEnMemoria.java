@@ -90,8 +90,10 @@ public Videojuego editar (Long id, Videojuego datos) {
     validar(datos);
 
     videojuego.setNombre(datos.getNombre());
+    videojuego.setGenero(datos.getGenero());
     videojuego.setPlataforma(datos.getPlataforma());
     videojuego.setPrecio(datos.getPrecio()); 
+    videojuego.setImagen(datos.getImagen());
     return videojuego;
 }
 

@@ -25,9 +25,25 @@ form {
     padding: 0;
     margin: 0;
     padding-bottom:20px ;
-    flex-direction: column; /* input y botón apilados en vez de en fila */
+    flex-direction: row; /* input y botón apilados en vez de en fila */
     align-items: center;
 
+}
+.formulario-guardar{
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    margin: 20px 0;
+    background-color:  #030617;
+    padding: 0;
+    margin: 0;
+    padding-bottom:20px ;
+    flex-direction: column; /* input y botón apilados en vez de en fila */
+    align-items: center;
+}
+
+.formulario-guardar input{
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);;
 }
 
 header {
@@ -49,11 +65,16 @@ input{
     border-radius: 16px;
 }
 
-input[type="text"] {
+ input[type="text"] {
     color: #E5E7EB; 
     max-width: 100%;
-}
+} 
 
+input:focus{
+    outline: none;
+    box-shadow: 0 0 10px rgba(99, 102, 241, 0.5);
+    border-color: #6366f1;
+}
 .buscar{
     background-color: #5C4EFE;
     color: white;
@@ -103,7 +124,7 @@ span{
     margin: 8px;
 }
 
-.inicio-h2{
+.inicio-h2, .nuevo-h2{
     text-align: center;
 }
 

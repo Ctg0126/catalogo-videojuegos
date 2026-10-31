@@ -6,19 +6,46 @@
  <header th:replace="~{fragmentos/comunes :: cabecera}"></header>
 
 <main class="nuevo-videojuego">
-    
-    <h2 class="Agregar-titulo">Agregar Videojuego</h2>
       
     <a th:href="@{/videojuegos}" class="regreso">
             ← Volver al catálogo
         </a>
 
+<h2 class="nuevo-h2" th:text="${videojuego.id} == null ? 'Agregar videojuego' : 'Editar videojuego'">Nuevo Videojuego</h2>
 
+    <form class="formulario-guardar" method="post" th:object="${videojuego}"
+          th:action="${videojuego.id} == null
+                     ? @{/videojuegos}
+                     : @{/videojuegos/{id}(id=${videojuego.id})}">
 
+        <label>Nombre
+            <input type="text" th:field="*{nombre}">
+        </label>
+        <p class="error" th:if="${#fields.hasErrors('nombre')}" th:errors="*{nombre}"></p>
 
+        <label>Genero
+            <input type="text" th:field="*{genero}">
+        </label>
+        <p class="error" th:if="${#fields.hasErrors('genero')}" th:errors="*{genero}"></p>
 
+        <label>Plataforma
+            <input type="text" th:field="*{plataforma}">
+        </label>
+        <p class="error" th:if="${#fields.hasErrors('plataforma')}" th:errors="*{plataforma}"></p>
 
+        <label>Precio
+            <input type="number" step="0.01" th:field="*{precio}">
+        </label>
+        <p class="error" th:if="${#fields.hasErrors('precio')}" th:errors="*{precio}"></p>
 
+        <label>Imagen
+            <input type="text" th:field="*{imagen}" placeholder="/img/nombre-imagen.jpg">
+        </label>
+        <p class="error" th:if="${#fields.hasErrors('imagen')}" th:errors="*{imagen}"></p>
+
+        <button type="submit">Guardar</button>
+        <a th:href="@{/videojuegos}">Cancelar</a>
+    </form>
 
 </main>
 
