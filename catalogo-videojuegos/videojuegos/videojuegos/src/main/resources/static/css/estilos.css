@@ -1,3 +1,4 @@
+
 * {
     box-sizing: border-box;
 }
@@ -306,17 +307,168 @@ nav a:hover {
     text-align: center;
 }
 
+/* =====================================================
+   Adaptación a móviles y tablets pequeñas
+   (el diseño de escritorio no cambia)
+   ===================================================== */
 @media (max-width: 768px) {
-    .catalogo {
-        grid-template-columns: repeat(2, 1fr);
+
+    header {
+        padding: 16px 12px;
+    }
+
+    header h1 {
+        margin: 0;
+        font-size: 1.6rem;
+    }
+
+    /* --- Campos de texto: quitamos el relleno de 100px por lado --- */
+    input {
+        padding: 12px 16px;
+        font-size: 16px;          /* evita el zoom automático de iOS al enfocar */
+        max-width: 100%;
+    }
+
+    /* --- Buscador del catálogo --- */
+    form {
+        flex-wrap: wrap;
+        gap: 10px;
+        padding: 16px 12px 20px;
+    }
+
+    form:not(.formulario-guardar) input[type="text"] {
+        flex: 1 1 200px;
+        width: auto;
+        min-width: 0;
+    }
+
+    .buscar {
+        min-height: 44px;         /* tamaño cómodo para tocar con el dedo */
+    }
+
+    .Añadir-boton {
+        display: block;
+        padding: 16px 12px 4px;
+        text-align: center;
+    }
+
+    .bienvenida,
+    .aviso,
+    .error {
+        padding: 0 12px;
+    }
+
+    /* --- Lista de videojuegos: 2 columnas --- */
+    .lista-juegos {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 12px;
+        padding: 12px;
+    }
+
+    .tarjeta-juego {
+        min-width: 0;
+        margin: 0;
+        padding: 12px 8px;
+        font-size: 0.95rem;
+    }
+
+    .lista-juegos a {
+        overflow-wrap: anywhere;  /* nombres largos como "The Legend of Zelda: ..." */
+    }
+
+    .imagen-juego {
+        width: 100%;
+        height: auto;
+        aspect-ratio: 7 / 6;
+    }
+
+    /* --- Página de inicio --- */
+    .inicio-h2,
+    .nuevo-h2,
+    .nombre-ficha {
+        padding: 0 16px;
+        font-size: 1.4rem;
+    }
+
+    .inicio-figure {
+        max-width: 100%;
+        margin: 20px auto;
+        padding: 0 16px;
+    }
+
+    .inicio-figure img {
+        min-width: 0;             /* antes obligaba a 900px de ancho */
+        width: 100%;
+        max-height: 200px;
+    }
+
+    .catalogo-ir {
+        padding: 14px 40px;
+        font-size: 1rem;
+    }
+
+    /* --- Ficha del videojuego --- */
+    .imagen-ficha {
+        width: calc(100% - 32px);
+        max-width: 350px;
+        height: auto;
+        max-height: 450px;
+    }
+
+    .detalles-juego {
+        padding: 0 16px;
+    }
+
+    /* --- Enlaces "Volver" y "Cancelar" más fáciles de tocar --- */
+    main .regreso {
+        display: inline-block;
+        margin-top: 0;
+        padding: 16px 12px 8px;
+    }
+
+    .cancelar {
+        display: inline-block;
+        padding: 12px;
+    }
+
+    /* --- Formulario de agregar / editar --- */
+    .contenedor-portada {
+        width: 100%;
+        padding: 0 16px;
+    }
+
+    .contenedor-portada label {
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+        width: 100%;
+        max-width: 420px;
+    }
+
+    .contenedor-portada input {
+        width: 100%;
+    }
+
+    .label-portada input {
+        padding: 12px 0;
+    }
+
+    footer {
+        margin-top: 24px;
     }
 }
 
-@media (max-width: 500px) {
-    .catalogo {
-        grid-template-columns: 1fr;
+@media (max-width: 360px) {
+    .lista-juegos {
+        gap: 8px;
+        padding: 8px;
+    }
+
+    .tarjeta-juego {
+        font-size: 0.9rem;
     }
 }
+
 @media (min-width: 1200px) {
     .lista-juegos {
         max-width: 1100px;

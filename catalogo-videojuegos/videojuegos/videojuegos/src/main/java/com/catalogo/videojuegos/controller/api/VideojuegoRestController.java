@@ -27,7 +27,7 @@ import org.springframework.web.bind.annotation.PutMapping;
 
 
 @RestController 
-@RequestMapping("/api/libros")
+@RequestMapping("/api/videojuegos")
 public class VideojuegoRestController {
 
     private final VideojuegoService servicio;
@@ -48,13 +48,13 @@ public ResponseEntity<VideojuegoDTO> uno(@PathVariable Long id){
 
 @PostMapping 
 public  ResponseEntity<VideojuegoDTO> crear(@RequestBody VideojuegoEntrada entrada){
-    Videojuego creado = servicio.crear(new Videojuego(null, entrada.nombre(), entrada.genero(), entrada.plataforma(), entrada.precio(), entrada.imagen()));
-    return ResponseEntity.created(URI.create("/api/Videojuegos/"+ creado.getId())).body(VideojuegoDTO.de(creado));
+    Videojuego creado = servicio.crear(new Videojuego( entrada.nombre(), entrada.genero(), entrada.plataforma(), entrada.precio(), entrada.imagen()));
+    return ResponseEntity.created(URI.create("/api/videojuegos/"+ creado.getId())).body(VideojuegoDTO.de(creado));
 }
 
 @PutMapping("/{id}")
 public VideojuegoDTO editar(@PathVariable Long id, @RequestBody VideojuegoEntrada entrada) {
-    Videojuego actualizado = servicio.editar(id, new Videojuego(id, entrada.nombre(), entrada.genero(), entrada.plataforma(), entrada.precio(), entrada.imagen()));
+    Videojuego actualizado = servicio.editar(id, new Videojuego(entrada.nombre(), entrada.genero(), entrada.plataforma(), entrada.precio(), entrada.imagen()));
     return VideojuegoDTO.de(actualizado);
 }
 
