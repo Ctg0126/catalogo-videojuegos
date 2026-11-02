@@ -13,38 +13,40 @@
 
 <h2 class="nuevo-h2" th:text="${videojuego.id} == null ? 'Agregar videojuego' : 'Editar videojuego'">Nuevo Videojuego</h2>
 
-    <form class="formulario-guardar" method="post" th:object="${videojuego}"
+    <form class="formulario-guardar" method="post" enctype="multipart/form-data" th:object="${videojuego}"
           th:action="${videojuego.id} == null
                      ? @{/videojuegos}
                      : @{/videojuegos/{id}(id=${videojuego.id})}">
-
-        <label>Nombre
+        
+        <div class="contenedor-portada">
+        <label>Nombre:
             <input type="text" th:field="*{nombre}">
         </label>
         <p class="error" th:if="${#fields.hasErrors('nombre')}" th:errors="*{nombre}"></p>
 
-        <label>Genero
+        <label>Genero:
             <input type="text" th:field="*{genero}">
         </label>
         <p class="error" th:if="${#fields.hasErrors('genero')}" th:errors="*{genero}"></p>
 
-        <label>Plataforma
+        <label>Plataforma:
             <input type="text" th:field="*{plataforma}">
         </label>
         <p class="error" th:if="${#fields.hasErrors('plataforma')}" th:errors="*{plataforma}"></p>
 
-        <label>Precio
+        <label>Precio:
             <input type="number" step="0.01" th:field="*{precio}">
         </label>
         <p class="error" th:if="${#fields.hasErrors('precio')}" th:errors="*{precio}"></p>
 
-        <label>Imagen
-            <input type="text" th:field="*{imagen}" placeholder="/img/nombre-imagen.jpg">
+        <label class="label-portada">Portada:
+            <input type="file" name="archivoImagen" accept="image/jpeg,image/png,image/webp*">
         </label>
-        <p class="error" th:if="${#fields.hasErrors('imagen')}" th:errors="*{imagen}"></p>
+        </div>
+        <p class="error" th:if="${#fields.hasGlobalErrors()}" th:each="error : ${#fields.globalErrors()}" th:text="${error}"></p>
 
-        <button type="submit">Guardar</button>
-        <a th:href="@{/videojuegos}">Cancelar</a>
+        <button class="buscar"  type="submit">Guardar</button>
+        <a class="cancelar" th:href="@{/videojuegos}">Cancelar</a>
     </form>
 
 </main>

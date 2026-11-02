@@ -8,6 +8,7 @@ import java.util.Optional;
 import java.util.concurrent.atomic.AtomicLong;
 
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.catalogo.videojuegos.model.Videojuego;
 
@@ -16,8 +17,11 @@ public class VideojuegoServiceEnMemoria implements VideojuegoService{
 
     private final Map<Long, Videojuego> videojuegos = new LinkedHashMap<>();
     private final AtomicLong siguienteId = new AtomicLong(1);
+    private final StorageService almacen;
 
-public VideojuegoServiceEnMemoria(){
+public VideojuegoServiceEnMemoria(StorageService almacen){
+    
+    this.almacen =almacen;
 
     crear(new Videojuego(null, "Cuphead", "Acción, plataformas", "pc,Xbox, PlayStation, Switch", 40000, "/img/cuphead-portada.jpg"));
     crear(new Videojuego(null, "Fortnite", "Battle royale", "pc", 0, "/img/fortnite-portada.jpg"));
@@ -83,6 +87,31 @@ public Videojuego crear(Videojuego videojuego){
     return videojuego;
 }
 
+@Override
+public Videojuego crear(Videojuego videojuego, MultipartFile imagen) {
+
+    Videojuego creado = crear(videojuego);
+
+    try {
+        String nombreImagen = almacen.guardarImagen(
+            creado.getId(),
+            imagen
+        );
+
+        if (nombreImagen != null) {
+            creado.setImagen("/imagenes-videojuegos/" + nombreImagen);
+        }
+
+    } catch (ReglaNegocioException e) {
+
+        videojuegos.remove(creado.getId());
+
+        throw e;
+    }
+
+    return creado;
+}
+
 @Override 
 public Videojuego editar (Long id, Videojuego datos) {
     Videojuego videojuego = buscar(id).orElseThrow(() -> new NoEncontradoException("no se encuentra el Videojuego" + id));
@@ -93,7 +122,34 @@ public Videojuego editar (Long id, Videojuego datos) {
     videojuego.setGenero(datos.getGenero());
     videojuego.setPlataforma(datos.getPlataforma());
     videojuego.setPrecio(datos.getPrecio()); 
+    if (datos.getImagen() != null) {
     videojuego.setImagen(datos.getImagen());
+    }
+    return videojuego;
+}
+
+@Override
+public Videojuego editar(Long id, Videojuego datos, MultipartFile imagen) {
+
+    Videojuego videojuego = buscar(id)
+            .orElseThrow(() -> new NoEncontradoException(
+                    "No existe el videojuego " + id));
+
+    validar(datos);
+
+    // Si se seleccionó una imagen nueva, la guardamos.
+    if (imagen != null && !imagen.isEmpty()) {
+        String nombreImagen = almacen.guardarImagen(id, imagen);
+
+        videojuego.setImagen("/imagenes-videojuegos/" + nombreImagen);
+    }
+
+    // Actualizamos los demás datos.
+    videojuego.setNombre(datos.getNombre());
+    videojuego.setGenero(datos.getGenero());
+    videojuego.setPlataforma(datos.getPlataforma());
+    videojuego.setPrecio(datos.getPrecio());
+
     return videojuego;
 }
 

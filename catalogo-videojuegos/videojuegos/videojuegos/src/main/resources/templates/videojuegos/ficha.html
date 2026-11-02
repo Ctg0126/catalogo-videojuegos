@@ -12,9 +12,9 @@
 
         <h2 class="nombre-ficha" th:text="${videojuego.nombre}">Nombre del videojuego</h2>
 
-        <img class="imagen-ficha"
-             th:src="${videojuego.imagen}"
-             th:alt="${videojuego.nombre}">
+        <img class="imagen-ficha" th:src="${videojuego.imagen != null
+                ? videojuego.imagen
+                : '/img/sin-portada.svg'}" alt="Portada del videojuego">
 
         <section class="detalles-juego">
             <p>

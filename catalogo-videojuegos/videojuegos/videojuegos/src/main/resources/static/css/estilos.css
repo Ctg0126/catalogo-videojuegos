@@ -76,7 +76,7 @@ input:focus{
     border-color: #6366f1;
 }
 .buscar{
-    background-color: #5C4EFE;
+    background-color: #818CF8;;
     color: white;
     font-style: bold;
     padding: 12px 20px;
@@ -197,12 +197,55 @@ object-fit: contain;
     text-align: center;
 }
 
+.regreso{
+    margin-top: 200px;
+    padding-top: 30px
+}
 
+.cancelar{
+ text-decoration: none;
+ font-weight: bold;
+ color:#FF7A00;
+ margin-top: 10px;
+}
 
+.contenedor-portada{
+    display: flex;
+    align-items: center; /* Alinea verticalmente al centro */
+    gap: 15px; /* Controla exactamente el espacio entre "Portada:" y el botón */
+    margin-bottom: 20px; /* Espacio opcional con los elementos de abajo */
+    flex-direction: column
+}
 
+.campo-formulario label {
+    min-width: 90px; /* Ajusta según lo que midan tus otras etiquetas como "Precio:" */
+}
 
+.Añadir-boton{
+     color:#FF7A00;
+     text-decoration: none;
+     font-weight: bold;
+     padding-top: 20px;
+     text-align: center;
+}
 
+.error{
+    text-align: center;
+    color: #FF7A00;
+    border: 2px;
+    border-color: aqua;
+}
 
+.aviso{
+    text-align: center;
+    color: #818CF8;
+    border: 2px;
+    border-color: aqua;
+}
+
+.label-portada input{
+    padding-left:0 ;
+}
 /* 
 nav {
     display: flex;

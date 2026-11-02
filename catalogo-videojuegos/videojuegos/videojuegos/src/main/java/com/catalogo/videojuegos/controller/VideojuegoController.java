@@ -3,13 +3,16 @@ package com.catalogo.videojuegos.controller;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.catalogo.videojuegos.model.Videojuego;
 import com.catalogo.videojuegos.service.NoEncontradoException;
 import com.catalogo.videojuegos.service.ReglaNegocioException;
 import com.catalogo.videojuegos.service.VideojuegoService;
+
 
 import jakarta.validation.Valid;
 
@@ -54,15 +57,16 @@ public String nuevo(Model modelo){
 }
 
 @PostMapping 
-public String crear(@Valid @ModelAttribute ("videojuego") Videojuego videojuego, BindingResult errores, RedirectAttributes flash){
+public String crear(@Valid @ModelAttribute ("videojuego") Videojuego videojuego, BindingResult errores, @RequestParam(required = false) MultipartFile archivoImagen,
+        RedirectAttributes flash){
 
     if (errores.hasErrors()){
         return "videojuegos/nuevo";
     }
     try {
-        servicio.crear(videojuego);
+        servicio.crear(videojuego, archivoImagen);
     } catch (ReglaNegocioException e) {
-        errores.rejectValue("nombre", "duplicado",e.getMessage());   
+        errores.reject("regla",e.getMessage());   
         return "videojuegos/nuevo";     
     }
     flash.addFlashAttribute("aviso","Videojuego añadido");
@@ -81,21 +85,35 @@ public String formularioEditar(@PathVariable Long id, Model modelo) {
 @PostMapping("/{id}")
 public String editar(@PathVariable Long id, @Valid @ModelAttribute("videojuego") Videojuego videojuego,
                      BindingResult errores,
-                     RedirectAttributes flash) {
+                     @RequestParam(required = false) MultipartFile archivoImagen,
+        RedirectAttributes flash) {
+
+    videojuego.setId(id);
 
     if (errores.hasErrors()) {
         return "videojuegos/nuevo";
     }
     try {
-        servicio.editar(id, videojuego);      
+        servicio.editar(id, videojuego, archivoImagen);      
     } catch (ReglaNegocioException e) {
-        errores.rejectValue("nombre", "duplicado", e.getMessage());
+        errores.reject("regla", e.getMessage());
         return "videojuegos/nuevo";
     }
     flash.addFlashAttribute("aviso", "Cambios guardados");
     return "redirect:/videojuegos/ficha/" + id;
 
 
+}
+
+
+@InitBinder ("videojuego")
+void camposDelFormulario(WebDataBinder binder){
+    binder.setAllowedFields(
+        "nombre",
+        "genero",
+        "plataforma",
+        "precio"
+    );
 }
 
 }
